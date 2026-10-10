@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMPLIKAA — Agencia de Marketing Digital | Ecosistemas, Producción y Desarrollo</title>
+  <meta name="description" content="AMPLIKAA es una agencia de marketing digital en Venezuela. Creamos ecosistemas digitales, produccion audiovisual y desarrollo web que convierten atencion en crecimiento.">
+  <meta property="og:title" content="AMPLIKAA — High-End Brand Agency">
+  <meta property="og:description" content="Digital Ecosystems · Production · Development. Agencia de marketing digital en Venezuela.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#050505">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0A'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-size='34' font-weight='900' text-anchor='middle' fill='%2300F0FF'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#050505',
+            obsidian: '#0A0A0A',
+            elec: '#00F0FF',
+            viol: '#7B2CBF',
+          },
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            grotesk: ['Space Grotesk', 'sans-serif'],
+            mono: ['Space Mono', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root { --elec: #00F0FF; --viol: #7B2CBF; }
+
+    html { scroll-behavior: smooth; }
+    body { background-color: #050505; color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+
+    ::selection { background: rgba(0, 240, 255, .25); color: #fff; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 8px; border: 2px solid #0A0A0A; }
+    ::-webkit-scrollbar-thumb:hover { background: #00F0FF55; }
+
+    .skip-link { position: absolute; left: -9999px; z-index: 100; }
+    .skip-link:focus { left: 1rem; top: 1rem; padding: .75rem 1rem; background: #00F0FF; color: #000; border-radius: .5rem; font-family: 'Space Mono', monospace; }
+
+    :focus-visible { outline: 2px solid var(--elec); outline-offset: 3px; }
+
+    .grid-bg {
+      background-image: radial-gradient(rgba(255,255,255,.14) 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #00F0FF 0%, #7B2CBF 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .label-mono {
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+
+    .corners::before,
+    .corners::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+      transition: border-color .3s ease;
+    }
+    .corners::before { top: 10px; left: 10px; border-top: 1px solid rgba(255,255,255,.28); border-left: 1px solid rgba(255,255,255,.28); }
+    .corners::after { bottom: 10px; right: 10px; border-bottom: 1px solid rgba(255,255,255,.28); border-right: 1px solid rgba(255,255,255,.28); }
+    .group:hover .corners::before,
+    .group:hover .corners::after,
+    .corners-elec:hover::before,
+    .corners-elec:hover::after { border-color: rgba(0,240,255,.8); }
+
+    .glass {
+      background: rgba(255,255,255,.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .glow-elec { box-shadow: 0 0 0 1px rgba(0,240,255,.35), 0 0 32px rgba(0,240,255,.18); }
+    .glow-viol { box-shadow: 0 0 0 1px rgba(123,44,191,.4), 0 0 32px rgba(123,44,191,.2); }
+
+    .aurora {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(110px);
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .45; transform: scale(.85); } }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: marquee 32s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.is-in { opacity: 1; transform: none; }
+
+    .hero-mouse-glow {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(0,240,255,.09) 0%, rgba(123,44,191,.06) 40%, transparent 70%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .5s ease;
+    }
+
+    .work-card img { transition: transform .6s cubic-bezier(.16,1,.3,1), filter .4s ease; }
+    .work-card:hover img { transform: scale(1.06); filter: saturate(1.15); }
+
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 0; height: 1px;
+      background: linear-gradient(90deg, #00F0FF, #7B2CBF);
+      transition: width .3s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link[aria-current='true']::after { width: 100%; }
+
+    .field {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: .6rem;
+      padding: .8rem 1rem;
+      color: #fff;
+      font-size: .95rem;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .field::placeholder { color: #6b7280; }
+    .field:focus { outline: none; border-color: #00F0FF; box-shadow: 0 0 0 3px rgba(0,240,255,.15); background: rgba(255,255,255,.06); }
+    .field[aria-invalid='true'] { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,.12); }
+    select.field { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239ca3af' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+    select.field option { background: #0A0A0A; color: #fff; }
+
+    .noise::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .marquee-track, .pulse-dot, .aurora { animation: none !important; }
+      .hero-mouse-glow { display: none; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AMPLIKAA",
+    "description": "Agencia de marketing digital: ecosistemas digitales, produccion y desarrollo.",
+    "areaServed": "VE",
+    "email": "hola@amplikaa.com"
+  }
+  </script>
+</head>
+<body class="noise antialiased">
+
+  <a href="#inicio" class="skip-link">Saltar al contenido</a>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="fixed top-0 left-0 right-0 h-[2px] z-[70] bg-transparent" aria-hidden="true">
+    <div id="scroll-progress" class="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-elec to-viol"></div>
+  </div>
+
+  <!-- ======================= NAV ======================= -->
+  <header id="nav" class="fixed top-0 inset-x-0 z-[60] transition-all duration-300">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+        <a href="#inicio" class="flex items-center gap-3 group cursor-pointer" aria-label="AMPLIKAA — Inicio">
+          <span class="w-2.5 h-2.5 rounded-full bg-elec pulse-dot" aria-hidden="true"></span>
+          <span class="font-syne text-xl font-extrabold uppercase tracking-tight">AMPLIK<span class="text-gradient">AA</span></span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-9" aria-label="Principal">
+          <a href="#servicios" class="nav-link text-sm text-gray-300 hover:text-white transition-colors cursor-pointer">Servicios</a>
+          <a href="#trabajos" class="nav-link text-sm text-gray-300 hover:text-white transition-colors cursor-pointer">Trabajos</a>
+          <a href="#proceso" class="nav-link text-sm text-gray-300 hover:text-white transition-colors cursor-pointer">Proceso</a>
+          <a href="#planes" class="nav-link text-sm text-gray-300 hover:text-white transition-colors cursor-pointer">Planes</a>
+          <a href="app.html" class="nav-link text-sm text-elec hover:text-white transition-colors cursor-pointer">Construye tu Website</a>
+          <a href="#contacto" class="nav-link text-sm text-gray-300 hover:text-white transition-colors cursor-pointer">Contacto</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="app.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-elec text-black text-sm font-semibold hover:bg-white transition-colors duration-200 cursor-pointer">
+            Construir mi sitio
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <button id="menu-btn" class="lg:hidden w-11 h-11 grid place-items-center rounded-lg border border-white/15 text-white hover:border-elec/60 transition-colors cursor-pointer" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+            <svg id="icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg id="icon-close" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden hidden border-t border-white/10 bg-ink/95 backdrop-blur-xl">
+      <nav class="px-5 py-6 flex flex-col gap-1" aria-label="Móvil">
+        <a href="#servicios" class="mobile-link px-4 py-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-elec transition-colors">Servicios</a>
+        <a href="#trabajos" class="mobile-link px-4 py-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-elec transition-colors">Trabajos</a>
+        <a href="#proceso" class="mobile-link px-4 py-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-elec transition-colors">Proceso</a>
+        <a href="#planes" class="mobile-link px-4 py-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-elec transition-colors">Planes</a>
+        <a href="app.html" class="mobile-link px-4 py-3 rounded-lg text-elec hover:bg-white/5 transition-colors">Construye tu Website</a>
+        <a href="#contacto" class="mobile-link px-4 py-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-elec transition-colors">Contacto</a>
+        <a href="app.html" class="mobile-link mt-3 px-4 py-3 rounded-lg bg-elec text-black font-semibold text-center">Construir mi sitio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ======================= HERO ======================= -->
+    <section class="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden" aria-label="Presentación">
+      <div class="absolute inset-0 grid-bg opacity-[.5]" aria-hidden="true"></div>
+      <div class="aurora -top-40 -left-32 w-[560px] h-[560px] bg-elec/15" aria-hidden="true"></div>
+      <div class="aurora top-24 -right-40 w-[620px] h-[620px] bg-viol/20" aria-hidden="true"></div>
+      <div id="hero-glow" class="hero-mouse-glow" aria-hidden="true"></div>
+      <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-5 sm:px-8 w-full">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass mb-10">
+            <span class="w-2 h-2 rounded-full bg-elec pulse-dot" aria-hidden="true"></span>
+            <span class="font-mono text-[11px] tracking-[.25em] uppercase text-gray-300">Disponible para nuevos proyectos · 2026</span>
+          </div>
+        </div>
+
+        <h1 class="reveal font-syne font-extrabold uppercase leading-[.92] tracking-[-0.04em] text-[clamp(3.4rem,12vw,9.5rem)]">
+          AMPLIK<span class="text-gradient">AA</span>
+        </h1>
+
+        <div class="reveal mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] sm:text-sm tracking-[.3em] uppercase text-gray-400">
+          <span>Digital Ecosystems</span>
+          <span class="text-elec" aria-hidden="true">•</span>
+          <span>Production</span>
+          <span class="text-viol" aria-hidden="true">•</span>
+          <span>Development</span>
+        </div>
+
+        <p class="reveal mt-8 max-w-2xl text-lg sm:text-xl text-gray-300 leading-relaxed">
+          Agencia de marketing digital en <strong class="text-white font-semibold">Venezuela</strong>.
+          Diseñamos ecosistemas digitales de alto impacto: marca, contenido, sitios y producto —
+          para convertir atención en crecimiento medible.
+        </p>
+
+        <div class="reveal mt-10 flex flex-wrap items-center gap-4">
+          <a href="app.html" class="group inline-flex items-center gap-2.5 px-7 py-4 rounded-xl bg-elec text-black font-semibold hover:bg-white transition-all duration-200 cursor-pointer glow-elec">
+            Construye tu website
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-0.5 transition-transform" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#trabajos" class="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl border border-white/20 text-white font-semibold hover:border-elec/70 hover:bg-white/5 transition-all duration-200 cursor-pointer">
+            Ver portafolio
+          </a>
+        </div>
+
+        <dl class="reveal mt-16 grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10 max-w-3xl">
+          <div class="bg-ink/80 backdrop-blur px-5 py-6">
+            <dt class="label-mono mb-2">Proyectos</dt>
+            <dd class="font-syne text-3xl font-extrabold"><span class="counter" data-target="150">0</span>+</dd>
+          </div>
+          <div class="bg-ink/80 backdrop-blur px-5 py-6">
+            <dt class="label-mono mb-2">Marcas</dt>
+            <dd class="font-syne text-3xl font-extrabold"><span class="counter" data-target="40">0</span>+</dd>
+          </div>
+          <div class="bg-ink/80 backdrop-blur px-5 py-6">
+            <dt class="label-mono mb-2">Retención</dt>
+            <dd class="font-syne text-3xl font-extrabold"><span class="counter" data-target="98">0</span>%</dd>
+          </div>
+          <div class="bg-ink/80 backdrop-blur px-5 py-6">
+            <dt class="label-mono mb-2">Respuesta</dt>
+            <dd class="font-syne text-3xl font-extrabold">&lt;<span class="counter" data-target="24">0</span>h</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ======================= MARQUEE ======================= -->
+    <section class="border-y border-white/10 py-5 bg-obsidian/60 overflow-hidden marquee" aria-label="Sectores que atendemos">
+      <div class="marquee-track flex w-max gap-12 whitespace-nowrap" aria-hidden="true">
+        <span class="label-mono text-gray-500">SaaS</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">E-Commerce</span><span class="text-viol">◆</span>
+        <span class="label-mono text-gray-500">Gastronomía</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">Retail</span><span class="text-viol">◆</span>
+        <span class="label-mono text-gray-500">Fintech</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">Salud</span><span class="text-viol">◆</span>
+        <span class="label-mono text-gray-500">Startups</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">Educación</span><span class="text-viol">◆</span>
+        <span class="label-mono text-gray-500">Inmobiliaria</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">Cultura & Música</span><span class="text-viol">◆</span>
+        <span class="label-mono text-gray-500">SaaS</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">E-Commerce</span><span class="text-viol">◆</span>
+        <span class="label-mono text-gray-500">Gastronomía</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">Retail</span><span class="text-viol">◆</span>
+        <span class="label-mono text-gray-500">Fintech</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">Salud</span><span class="text-viol">◆</span>
+        <span class="label-mono text-gray-500">Startups</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">Educación</span><span class="text-viol">◆</span>
+        <span class="label-mono text-gray-500">Inmobiliaria</span><span class="text-elec">◆</span>
+        <span class="label-mono text-gray-500">Cultura & Música</span><span class="text-viol">◆</span>
+      </div>
+    </section>
+
+    <!-- ======================= SERVICIOS ======================= -->
+    <section id="servicios" class="relative py-28 sm:py-36" aria-labelledby="tit-servicios">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <header class="reveal max-w-3xl mb-16">
+          <p class="label-mono mb-4">// 01 — Servicios</p>
+          <h2 id="tit-servicios" class="font-syne text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight leading-[1.05]">
+            Un ecosistema,<br><span class="text-gradient">no piezas sueltas</span>
+          </h2>
+          <p class="mt-6 text-gray-400 text-lg leading-relaxed">
+            Cada servicio se conecta con el siguiente: de la identidad al contenido, del contenido al sitio, del sitio al cliente.
+          </p>
+        </header>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- 01 -->
+          <article class="reveal group relative corners glass rounded-2xl p-8 hover:border-elec/40 transition-all duration-300 cursor-default">
+            <div class="flex items-start justify-between mb-8">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>
+              <span class="font-mono text-xs text-gray-600">01</span>
+            </div>
+            <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-3">Ecosistemas Digitales</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">Sitios, landings y e-commerce diseñados para convertir. Arquitectura, UX y performance en un solo sistema.</p>
+            <ul class="flex flex-wrap gap-2">
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Web</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">E-Commerce</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">CRO</li>
+            </ul>
+          </article>
+          <!-- 02 -->
+          <article class="reveal group relative corners glass rounded-2xl p-8 hover:border-elec/40 transition-all duration-300 cursor-default">
+            <div class="flex items-start justify-between mb-8">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="1.5" aria-hidden="true"><path d="M15 10l4.55-2.27A1 1 0 0121 8.6v6.8a1 1 0 01-1.45.87L15 14"/><rect x="2" y="6" width="13" height="12" rx="2"/></svg>
+              <span class="font-mono text-xs text-gray-600">02</span>
+            </div>
+            <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-3">Producción Audiovisual</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">Foto, video y reels con dirección de arte propia. Contenido que se siente premium y rinde en cada formato.</p>
+            <ul class="flex flex-wrap gap-2">
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Foto</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Reels</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Branded</li>
+            </ul>
+          </article>
+          <!-- 03 -->
+          <article class="reveal group relative corners glass rounded-2xl p-8 hover:border-elec/40 transition-all duration-300 cursor-default">
+            <div class="flex items-start justify-between mb-8">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="1.5" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg>
+              <span class="font-mono text-xs text-gray-600">03</span>
+            </div>
+            <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-3">Desarrollo a Medida</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">Web apps, portales e integraciones. Cuando la plantilla no alcanza, lo construimos.</p>
+            <ul class="flex flex-wrap gap-2">
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Apps</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">APIs</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Automatización</li>
+            </ul>
+          </article>
+          <!-- 04 -->
+          <article class="reveal group relative corners glass rounded-2xl p-8 hover:border-viol/50 transition-all duration-300 cursor-default">
+            <div class="flex items-start justify-between mb-8">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7B2CBF" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="#7B2CBF"/></svg>
+              <span class="font-mono text-xs text-gray-600">04</span>
+            </div>
+            <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-3">Branding & Diseño</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">Identidad, design systems y piezas que sostienen la marca en todos los puntos de contacto.</p>
+            <ul class="flex flex-wrap gap-2">
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Identidad</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Design System</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Editorial</li>
+            </ul>
+          </article>
+          <!-- 05 -->
+          <article class="reveal group relative corners glass rounded-2xl p-8 hover:border-viol/50 transition-all duration-300 cursor-default">
+            <div class="flex items-start justify-between mb-8">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7B2CBF" stroke-width="1.5" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+              <span class="font-mono text-xs text-gray-600">05</span>
+            </div>
+            <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-3">Performance & CRO</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">Pauta en Meta y Google con foco en ROI. Tests, embudos y reporting claro, sin humo.</p>
+            <ul class="flex flex-wrap gap-2">
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Meta Ads</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Google Ads</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Analytics</li>
+            </ul>
+          </article>
+          <!-- 06 -->
+          <article class="reveal group relative corners glass rounded-2xl p-8 hover:border-viol/50 transition-all duration-300 cursor-default">
+            <div class="flex items-start justify-between mb-8">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7B2CBF" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <span class="font-mono text-xs text-gray-600">06</span>
+            </div>
+            <h3 class="font-syne text-xl font-bold uppercase tracking-wide mb-3">Social & Contenido</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">Estrategia, calendario y gestión de comunidades. Presencia constante con línea gráfica propia.</p>
+            <ul class="flex flex-wrap gap-2">
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Estrategia</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Gestión</li>
+              <li class="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded border border-white/10 text-gray-400">Community</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= TRABAJOS ======================= -->
+    <section id="trabajos" class="relative py-28 sm:py-36 bg-obsidian/40 border-y border-white/10" aria-labelledby="tit-trabajos">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <header class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
+          <div class="max-w-2xl">
+            <p class="label-mono mb-4">// 02 — Portafolio</p>
+            <h2 id="tit-trabajos" class="font-syne text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight leading-[1.05]">
+              El trabajo<br><span class="text-gradient">habla solo</span>
+            </h2>
+          </div>
+          <p class="text-gray-400 max-w-md leading-relaxed">
+            Sitios en vivo, identidades y producciones reales. Toca una pieza para verla o visita el sitio publicado.
+          </p>
+        </header>
+
+        <div class="reveal flex flex-wrap gap-2 mb-10" role="group" aria-label="Filtrar portafolio">
+          <button class="filter-btn active px-4 py-2 rounded-lg font-mono text-[11px] uppercase tracking-widest border border-elec/50 bg-elec/10 text-elec transition-all cursor-pointer" data-filter="all">Todos</button>
+          <button class="filter-btn px-4 py-2 rounded-lg font-mono text-[11px] uppercase tracking-widest border border-white/15 text-gray-400 hover:border-white/40 hover:text-white transition-all cursor-pointer" data-filter="web">Sitios Web</button>
+          <button class="filter-btn px-4 py-2 rounded-lg font-mono text-[11px] uppercase tracking-widest border border-white/15 text-gray-400 hover:border-white/40 hover:text-white transition-all cursor-pointer" data-filter="branding">Branding</button>
+          <button class="filter-btn px-4 py-2 rounded-lg font-mono text-[11px] uppercase tracking-widest border border-white/15 text-gray-400 hover:border-white/40 hover:text-white transition-all cursor-pointer" data-filter="produccion">Producción</button>
+          <button class="filter-btn px-4 py-2 rounded-lg font-mono text-[11px] uppercase tracking-widest border border-white/15 text-gray-400 hover:border-white/40 hover:text-white transition-all cursor-pointer" data-filter="social">Social</button>
+        </div>
+
+        <div id="work-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      </div>
+    </section>
+
+    <!-- ======================= PROCESO ======================= -->
+    <section id="proceso" class="relative py-28 sm:py-36" aria-labelledby="tit-proceso">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <header class="reveal max-w-3xl mb-16">
+          <p class="label-mono mb-4">// 03 — Proceso</p>
+          <h2 id="tit-proceso" class="font-syne text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight leading-[1.05]">
+            De la idea<br><span class="text-gradient">al sistema vivo</span>
+          </h2>
+        </header>
+
+        <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <li class="reveal relative corners glass rounded-2xl p-8">
+            <span class="font-mono text-4xl font-bold text-elec/30">01</span>
+            <h3 class="font-syne text-lg font-bold uppercase tracking-wide mt-4 mb-3">Descubrimiento</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Auditoría de marca, mercado y competencia. Definimos objetivos y métricas de éxito.</p>
+          </li>
+          <li class="reveal relative corners glass rounded-2xl p-8">
+            <span class="font-mono text-4xl font-bold text-elec/30">02</span>
+            <h3 class="font-syne text-lg font-bold uppercase tracking-wide mt-4 mb-3">Estrategia</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Ruta de contenido, arquitectura digital y plan de medios. Todo documentado.</p>
+          </li>
+          <li class="reveal relative corners glass rounded-2xl p-8">
+            <span class="font-mono text-4xl font-bold text-viol/40">03</span>
+            <h3 class="font-syne text-lg font-bold uppercase tracking-wide mt-4 mb-3">Producción</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Diseño, desarrollo y grabación en sprints semanales con entregas visibles.</p>
+          </li>
+          <li class="reveal relative corners glass rounded-2xl p-8">
+            <span class="font-mono text-4xl font-bold text-viol/40">04</span>
+            <h3 class="font-syne text-lg font-bold uppercase tracking-wide mt-4 mb-3">Lanzamiento & Escala</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Publicación, medición y optimización continua. Iteramos con datos, no con opiniones.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ======================= PLANES ======================= -->
+    <section id="planes" class="relative py-28 sm:py-36 bg-obsidian/40 border-y border-white/10" aria-labelledby="tit-planes">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <header class="reveal text-center max-w-2xl mx-auto mb-16">
+          <p class="label-mono mb-4">// 04 — Contratación</p>
+          <h2 id="tit-planes" class="font-syne text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight leading-[1.05]">
+            Planes que<br><span class="text-gradient">escalan contigo</span>
+          </h2>
+          <p class="mt-6 text-gray-400 leading-relaxed">Precios en USD. Contratación directa desde esta web — sin intermediarios.</p>
+        </header>
+
+        <div class="grid lg:grid-cols-3 gap-5 items-stretch">
+          <!-- Impulso -->
+          <article class="reveal relative corners glass rounded-2xl p-8 flex flex-col hover:border-white/25 transition-colors">
+            <p class="label-mono mb-4">Plan 01</p>
+            <h3 class="font-syne text-2xl font-extrabold uppercase">Impulso</h3>
+            <p class="mt-4 mb-6"><span class="font-syne text-5xl font-extrabold">$149</span><span class="text-gray-500 font-mono text-sm">/mes</span></p>
+            <p class="text-gray-400 text-sm mb-8">Para marcas que están empezando a mostrar presencia seria.</p>
+            <ul class="space-y-3 text-sm text-gray-300 mb-10 flex-1">
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>8 piezas de contenido al mes</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Gestión de 2 redes sociales</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Calendario editorial mensual</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Reporte mensual de métricas</li>
+            </ul>
+            <button class="plan-btn w-full py-3.5 rounded-xl border border-white/20 font-semibold hover:border-elec hover:text-elec transition-all cursor-pointer" data-plan="Impulso — $149/mes">Contratar plan</button>
+          </article>
+
+          <!-- Crecimiento (destacado) -->
+          <article class="reveal relative corners glass rounded-2xl p-8 flex flex-col border-elec/40 glow-elec lg:-mt-4 lg:mb-[-1rem]">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-elec text-black font-mono text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Más elegido</span>
+            <p class="label-mono mb-4">Plan 02</p>
+            <h3 class="font-syne text-2xl font-extrabold uppercase">Crecimiento</h3>
+            <p class="mt-4 mb-6"><span class="font-syne text-5xl font-extrabold text-gradient">$349</span><span class="text-gray-500 font-mono text-sm">/mes</span></p>
+            <p class="text-gray-400 text-sm mb-8">El sistema completo: contenido, sitio y pauta trabajando juntos.</p>
+            <ul class="space-y-3 text-sm text-gray-300 mb-10 flex-1">
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Todo lo de Impulso</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Producción audiovisual mensual</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Landing page de alta conversión</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Gestión de pauta (Meta/Google)</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Reporting quincenal + calls</li>
+            </ul>
+            <button class="plan-btn w-full py-3.5 rounded-xl bg-elec text-black font-semibold hover:bg-white transition-all cursor-pointer" data-plan="Crecimiento — $349/mes">Contratar plan</button>
+          </article>
+
+          <!-- Ecosistema -->
+          <article class="reveal relative corners glass rounded-2xl p-8 flex flex-col hover:border-white/25 transition-colors">
+            <p class="label-mono mb-4">Plan 03</p>
+            <h3 class="font-syne text-2xl font-extrabold uppercase">Ecosistema</h3>
+            <p class="mt-4 mb-6"><span class="font-syne text-5xl font-extrabold">$790</span><span class="text-gray-500 font-mono text-sm">/mes</span></p>
+            <p class="text-gray-400 text-sm mb-8">Partner digital completo con desarrollo a medida incluido.</p>
+            <ul class="space-y-3 text-sm text-gray-300 mb-10 flex-1">
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Todo lo de Crecimiento</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Sitio web o e-commerce a medida</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Branding / design system</li>
+              <li class="flex gap-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Soporte prioritario y SLA</li>
+            </ul>
+            <button class="plan-btn w-full py-3.5 rounded-xl border border-white/20 font-semibold hover:border-elec hover:text-elec transition-all cursor-pointer" data-plan="Ecosistema — $790/mes">Contratar plan</button>
+          </article>
+        </div>
+
+        <p class="reveal text-center mt-10 text-gray-500 font-mono text-xs tracking-wide">
+          ¿Proyecto único sin suscripción? <a href="app.html" class="text-elec hover:underline cursor-pointer">Diseña tu esquema y recibe un plan al instante →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================= CONTACTO ======================= -->
+    <section id="contacto" class="relative py-28 sm:py-36 overflow-hidden" aria-labelledby="tit-contacto">
+      <div class="aurora bottom-0 left-1/4 w-[500px] h-[500px] bg-elec/10" aria-hidden="true"></div>
+      <div class="aurora -bottom-20 right-0 w-[420px] h-[420px] bg-viol/15" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid lg:grid-cols-2 gap-14 lg:gap-20">
+          <div class="reveal">
+            <p class="label-mono mb-4">// 05 — Contacto</p>
+            <h2 id="tit-contacto" class="font-syne text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight leading-[1.05]">
+              Contrata<br><span class="text-gradient">desde aquí</span>
+            </h2>
+            <p class="mt-6 text-gray-400 text-lg leading-relaxed max-w-lg">
+              Cuéntanos qué necesitas. Respondemos en menos de 24 horas con un plan de acción y presupuesto claro.
+            </p>
+
+            <div class="mt-10 space-y-4">
+              <a id="link-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 p-5 rounded-xl glass hover:border-elec/50 transition-colors cursor-pointer">
+                <span class="w-11 h-11 rounded-lg bg-elec/10 grid place-items-center shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+                </span>
+                <span>
+                  <span class="block font-semibold group-hover:text-elec transition-colors">WhatsApp directo</span>
+                  <span class="block text-sm text-gray-500 font-mono" id="whatsapp-display">+58 412 000 0000</span>
+                </span>
+              </a>
+              <a id="link-email" href="#" class="group flex items-center gap-4 p-5 rounded-xl glass hover:border-viol/60 transition-colors cursor-pointer">
+                <span class="w-11 h-11 rounded-lg bg-viol/10 grid place-items-center shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7B2CBF" stroke-width="1.8" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                </span>
+                <span>
+                  <span class="block font-semibold group-hover:text-viol transition-colors">Correo</span>
+                  <span class="block text-sm text-gray-500 font-mono" id="email-display">hola@amplikaa.com</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <form id="contact-form" novalidate class="relative corners glass rounded-2xl p-7 sm:p-10">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="f-nombre" class="label-mono block mb-2">Nombre *</label>
+                  <input id="f-nombre" name="nombre" type="text" class="field" placeholder="Tu nombre" autocomplete="name" required>
+                  <p class="err hidden mt-1.5 text-xs text-red-400" data-err-for="f-nombre"></p>
+                </div>
+                <div>
+                  <label for="f-empresa" class="label-mono block mb-2">Empresa</label>
+                  <input id="f-empresa" name="empresa" type="text" class="field" placeholder="Marca o empresa" autocomplete="organization">
+                </div>
+                <div>
+                  <label for="f-email" class="label-mono block mb-2">Email *</label>
+                  <input id="f-email" name="email" type="email" class="field" placeholder="tu@email.com" autocomplete="email" required>
+                  <p class="err hidden mt-1.5 text-xs text-red-400" data-err-for="f-email"></p>
+                </div>
+                <div>
+                  <label for="f-wpp" class="label-mono block mb-2">WhatsApp *</label>
+                  <input id="f-wpp" name="whatsapp" type="tel" class="field" placeholder="+58 4XX XXX XXXX" autocomplete="tel" required>
+                  <p class="err hidden mt-1.5 text-xs text-red-400" data-err-for="f-wpp"></p>
+                </div>
+                <div>
+                  <label for="f-servicio" class="label-mono block mb-2">Servicio *</label>
+                  <select id="f-servicio" name="servicio" class="field" required>
+                    <option value="">Selecciona…</option>
+                    <option>Ecosistemas Digitales (Web)</option>
+                    <option>Producción Audiovisual</option>
+                    <option>Desarrollo a Medida</option>
+                    <option>Branding & Diseño</option>
+                    <option>Performance & CRO</option>
+                    <option>Social & Contenido</option>
+                    <option>Plan: Impulso</option>
+                    <option>Plan: Crecimiento</option>
+                    <option>Plan: Ecosistema</option>
+                    <option>Cotización de proyecto único</option>
+                  </select>
+                  <p class="err hidden mt-1.5 text-xs text-red-400" data-err-for="f-servicio"></p>
+                </div>
+                <div>
+                  <label for="f-presupuesto" class="label-mono block mb-2">Presupuesto (USD)</label>
+                  <select id="f-presupuesto" name="presupuesto" class="field">
+                    <option value="">Por definir</option>
+                    <option>$100 – $300</option>
+                    <option>$300 – $700</option>
+                    <option>$700 – $1,500</option>
+                    <option>$1,500 – $3,000</option>
+                    <option>$3,000+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mt-5">
+                <label for="f-mensaje" class="label-mono block mb-2">¿Qué necesitas? *</label>
+                <textarea id="f-mensaje" name="mensaje" rows="4" class="field resize-y" placeholder="Cuéntanos sobre tu proyecto, objetivos y plazos…" required></textarea>
+                <p class="err hidden mt-1.5 text-xs text-red-400" data-err-for="f-mensaje"></p>
+              </div>
+
+              <button type="submit" class="mt-7 w-full py-4 rounded-xl bg-elec text-black font-bold text-base hover:bg-white transition-all duration-200 cursor-pointer glow-elec inline-flex items-center justify-center gap-2.5">
+                Enviar solicitud por WhatsApp
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <p class="mt-4 text-center text-xs text-gray-500 font-mono leading-relaxed">
+                Se abrirá WhatsApp con tu mensaje listo. También llegará copia a tu correo si lo prefieres.
+              </p>
+            </form>
+
+            <div id="form-success" class="hidden corners glass rounded-2xl p-10 text-center">
+              <div class="w-14 h-14 mx-auto rounded-full bg-elec/10 grid place-items-center mb-5">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <h3 class="font-syne text-2xl font-extrabold uppercase mb-3">Solicitud enviada</h3>
+              <p class="text-gray-400 mb-6">Si WhatsApp no se abrió automáticamente, escríbenos directo. Respondemos en menos de 24 h.</p>
+              <button id="form-reset" class="px-6 py-3 rounded-xl border border-white/20 font-semibold hover:border-elec hover:text-elec transition-all cursor-pointer">Enviar otra solicitud</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CTA FINAL ======================= -->
+    <section class="relative border-t border-white/10 py-24 overflow-hidden" aria-label="Llamada final">
+      <div class="absolute inset-0 grid-bg opacity-30" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-4xl px-5 text-center">
+        <p class="reveal font-syne text-3xl sm:text-5xl font-extrabold uppercase tracking-tight leading-tight">
+          Tu marca merece un<br><span class="text-gradient">ecosistema a su altura</span>
+        </p>
+        <div class="reveal mt-9 flex flex-wrap justify-center gap-4">
+          <a href="app.html" class="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-elec transition-colors duration-200 cursor-pointer">
+            Construye tu website
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#contacto" class="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl border border-white/20 font-bold hover:border-elec hover:text-elec transition-colors duration-200 cursor-pointer">
+            Hablar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="border-t border-white/10 bg-obsidian">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 py-16">
+      <div class="grid md:grid-cols-4 gap-10 mb-14">
+        <div class="md:col-span-2">
+          <a href="#inicio" class="flex items-center gap-3 mb-5 w-fit cursor-pointer" aria-label="AMPLIKAA — Inicio">
+            <span class="w-2.5 h-2.5 rounded-full bg-elec" aria-hidden="true"></span>
+            <span class="font-syne text-2xl font-extrabold uppercase tracking-tight">AMPLIK<span class="text-gradient">AA</span></span>
+          </a>
+          <p class="text-gray-500 text-sm max-w-sm leading-relaxed mb-6">
+            High-end brand agency. Digital ecosystems, production y development desde Venezuela para el mundo.
+          </p>
+          <div class="flex gap-3">
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-lg border border-white/10 grid place-items-center text-gray-400 hover:text-elec hover:border-elec/50 transition-colors cursor-pointer">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-10 h-10 rounded-lg border border-white/10 grid place-items-center text-gray-400 hover:text-elec hover:border-elec/50 transition-colors cursor-pointer">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
+            </a>
+            <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-10 h-10 rounded-lg border border-white/10 grid place-items-center text-gray-400 hover:text-elec hover:border-elec/50 transition-colors cursor-pointer">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-lg border border-white/10 grid place-items-center text-gray-400 hover:text-elec hover:border-elec/50 transition-colors cursor-pointer">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav aria-label="Servicios">
+          <p class="label-mono mb-5">Servicios</p>
+          <ul class="space-y-3 text-sm text-gray-400">
+            <li><a href="app.html" class="hover:text-elec transition-colors cursor-pointer">Construye tu Website</a></li>
+            <li><a href="#servicios" class="hover:text-elec transition-colors cursor-pointer">Ecosistemas Digitales</a></li>
+            <li><a href="#servicios" class="hover:text-elec transition-colors cursor-pointer">Producción Audiovisual</a></li>
+            <li><a href="#servicios" class="hover:text-elec transition-colors cursor-pointer">Desarrollo a Medida</a></li>
+            <li><a href="#servicios" class="hover:text-elec transition-colors cursor-pointer">Branding & Diseño</a></li>
+            <li><a href="#planes" class="hover:text-elec transition-colors cursor-pointer">Planes mensuales</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Contacto y legal">
+          <p class="label-mono mb-5">Contacto</p>
+          <ul class="space-y-3 text-sm text-gray-400">
+            <li><a id="footer-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-elec transition-colors cursor-pointer">WhatsApp</a></li>
+            <li><a id="footer-email" href="#" class="hover:text-elec transition-colors cursor-pointer">hola@amplikaa.com</a></li>
+            <li><span class="text-gray-600">Caracas, Venezuela</span></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="font-mono text-xs text-gray-600 tracking-widest uppercase">AMPLIKAA Executive Identity — 2026</p>
+        <div class="flex items-center gap-4 font-mono text-[10px] text-gray-600">
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-obsidian border border-white/30"></span>#0A0A0A</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-elec"></span>#00F0FF</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-viol"></span>#7B2CBF</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp -->
+  <a id="float-wpp" href="#" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp"
+     class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full glass grid place-items-center text-elec glow-elec hover:bg-elec hover:text-black transition-all duration-300 opacity-0 translate-y-4 pointer-events-none cursor-pointer">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+  </a>
+
+  <!-- ======================= LIGHTBOX ======================= -->
+  <div id="lightbox" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/92 backdrop-blur-sm p-4 sm:p-8" role="dialog" aria-modal="true" aria-label="Visor de proyecto">
+    <button id="lb-close" class="absolute top-5 right-5 w-11 h-11 rounded-lg border border-white/20 grid place-items-center text-white hover:border-elec hover:text-elec transition-colors cursor-pointer" aria-label="Cerrar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button id="lb-prev" class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-lg border border-white/20 grid place-items-center text-white hover:border-elec hover:text-elec transition-colors cursor-pointer" aria-label="Anterior">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button id="lb-next" class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-lg border border-white/20 grid place-items-center text-white hover:border-elec hover:text-elec transition-colors cursor-pointer" aria-label="Siguiente">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <figure class="w-full max-w-4xl">
+      <div id="lb-media" class="rounded-2xl overflow-hidden border border-white/10 bg-obsidian"></div>
+      <figcaption class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <p id="lb-title" class="font-syne text-lg font-bold uppercase tracking-wide"></p>
+          <p id="lb-cat" class="label-mono mt-1"></p>
+        </div>
+        <a id="lb-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-elec text-black text-sm font-semibold hover:bg-white transition-colors cursor-pointer self-start">
+          Visitar sitio en vivo
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+      </figcaption>
+    </figure>
+  </div>
+
+  <script>
+    /* ============================================================
+       CONFIGURACIÓN — edita estos valores con tus datos reales
+       ============================================================ */
+    const CONFIG = {
+      whatsapp: '584121234567',            // código país + número (sin + ni espacios)
+      whatsappDisplay: '+58 412 123 4567',
+      email: 'hola@amplikaa.com',
+    };
+
+    /* ============================================================
+       PORTAFOLIO — reemplaza `thumb` con 'assets/work/archivo.jpg'
+       y `video` con la URL/ruta de tu video cuando tengas los assets.
+       `url` = enlace al sitio elaborado por AMPLIKAA.
+       ============================================================ */
+    const WORKS = [
+      { id: 1, title: 'Nova — SaaS Analytics',   cat: 'web',       type: 'image', c1: '#00F0FF', c2: '#7B2CBF', url: 'https://example.com/nova',   thumb: null },
+      { id: 2, title: 'Cacao Real — Branding',   cat: 'branding',  type: 'image', c1: '#7B2CBF', c2: '#c084fc', url: null,                          thumb: null },
+      { id: 3, title: 'Hotel Ávila — Reservas',  cat: 'web',       type: 'video', c1: '#0ea5e9', c2: '#00F0FF', url: 'https://example.com/avila',
+        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4', thumb: null },
+      { id: 4, title: 'Ritmo Urbano — Social',   cat: 'social',    type: 'image', c1: '#f59e0b', c2: '#7B2CBF', url: null,                          thumb: null },
+      { id: 5, title: 'Finora — Fintech Web',    cat: 'web',       type: 'image', c1: '#22d3ee', c2: '#3b82f6', url: 'https://example.com/finora',  thumb: null },
+      { id: 6, title: 'Clínica Vitalis — Ident.',cat: 'branding',  type: 'image', c1: '#34d399', c2: '#00F0FF', url: null,                          thumb: null },
+      { id: 7, title: 'Lumen — Reel 2026',       cat: 'produccion',type: 'video', c1: '#a78bfa', c2: '#00F0FF', url: null,
+        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', thumb: null },
+      { id: 8, title: 'Andes Retail — Campaña',  cat: 'social',    type: 'image', c1: '#fb7185', c2: '#7B2CBF', url: null,                          thumb: null },
+      { id: 9, title: 'MetroLab — Portal',       cat: 'web',       type: 'image', c1: '#00F0FF', c2: '#2563eb', url: 'https://example.com/metrolab', thumb: null },
+    ];
+
+    const CAT_LABELS = { web: 'Sitio Web', branding: 'Branding', produccion: 'Producción', social: 'Social' };
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- Contacto global ---------- */
+    const waLink = (text) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+    document.getElementById('link-whatsapp').href = waLink('Hola AMPLIKAA, quiero información sobre sus servicios.');
+    document.getElementById('float-wpp').href = waLink('Hola AMPLIKAA, vengo de su página web.');
+    document.getElementById('footer-whatsapp').href = waLink('Hola AMPLIKAA.');
+    document.getElementById('whatsapp-display').textContent = CONFIG.whatsappDisplay;
+    document.getElementById('link-email').href = `mailto:${CONFIG.email}`;
+    document.getElementById('footer-email').href = `mailto:${CONFIG.email}`;
+    document.getElementById('footer-email').textContent = CONFIG.email;
+    document.getElementById('email-display').textContent = CONFIG.email;
+
+    /* ---------- Nav: scroll state + menú móvil + progreso ---------- */
+    const nav = document.getElementById('nav');
+    const progress = document.getElementById('scroll-progress');
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    const floatWpp = document.getElementById('float-wpp');
+
+    function onScroll() {
+      const y = window.scrollY;
+      nav.classList.toggle('bg-ink/85', y > 24);
+      nav.classList.toggle('backdrop-blur-xl', y > 24);
+      nav.classList.toggle('border-b', y > 24);
+      nav.classList.toggle('border-white/10', y > 24);
+
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+
+      const show = y > 600;
+      floatWpp.classList.toggle('opacity-0', !show);
+      floatWpp.classList.toggle('translate-y-4', !show);
+      floatWpp.classList.toggle('pointer-events-none', !show);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+    });
+    document.querySelectorAll('.mobile-link').forEach((a) => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+
+    /* ---------- Link activo según sección visible ---------- */
+    const navLinks = [...document.querySelectorAll('.nav-link')];
+    const sectionIds = ['servicios', 'trabajos', 'proceso', 'planes', 'contacto'];
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        navLinks.forEach((l) => {
+          const active = l.getAttribute('href') === `#${e.target.id}`;
+          if (active) l.setAttribute('aria-current', 'true');
+          else l.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sectionIds.forEach((id) => { const el = document.getElementById(id); if (el) sectionObserver.observe(el); });
+
+    /* ---------- Reveal on scroll ---------- */
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+    /* ---------- Contadores ---------- */
+    const counterObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = Number(el.dataset.target);
+        obs.unobserve(el);
+        if (reduceMotion) { el.textContent = target; return; }
+        const dur = 1400, t0 = performance.now();
+        (function tick(t) {
+          const p = Math.min((t - t0) / dur, 1);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(tick);
+        })(t0);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.counter').forEach((el) => counterObserver.observe(el));
+
+    /* ---------- Glow del hero siguiendo el mouse ---------- */
+    if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+      const hero = document.querySelector('section[aria-label="Presentación"]');
+      const glow = document.getElementById('hero-glow');
+      hero.addEventListener('pointermove', (e) => {
+        const r = hero.getBoundingClientRect();
+        glow.style.opacity = '1';
+        glow.style.left = `${e.clientX - r.left}px`;
+        glow.style.top = `${e.clientY - r.top}px`;
+      });
+      hero.addEventListener('pointerleave', () => { glow.style.opacity = '0'; });
+    }
+
+    /* ---------- Portafolio: thumbnail SVG generado ---------- */
+    function thumbURI(w) {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="640" viewBox="0 0 900 640">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="${w.c1}" stop-opacity=".85"/>
+            <stop offset="100%" stop-color="${w.c2}" stop-opacity=".9"/>
+          </linearGradient>
+          <radialGradient id="v" cx=".3" cy=".2" r="1">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity=".14"/>
+            <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="900" height="640" fill="#0A0A0A"/>
+        <rect width="900" height="640" fill="url(#g)" opacity=".22"/>
+        <circle cx="720" cy="120" r="260" fill="url(#g)" opacity=".3"/>
+        <circle cx="140" cy="540" r="200" fill="url(#g)" opacity=".2"/>
+        <rect width="900" height="640" fill="url(#v)"/>
+        <g opacity=".25" stroke="#ffffff" stroke-width="1">
+          <path d="M0 160h900M0 320h900M0 480h900M225 0v640M450 0v640M675 0v640"/>
+        </g>
+        <text x="60" y="560" font-family="Arial Black, Arial, sans-serif" font-size="52" font-weight="900" fill="#ffffff" letter-spacing="-1">${w.title.split('—')[0].trim().toUpperCase()}</text>
+        <text x="62" y="596" font-family="Courier New, monospace" font-size="16" fill="${w.c1}" letter-spacing="4">AMPLIKAA // ${CAT_LABELS[w.cat].toUpperCase()}</text>
+        <rect x="24" y="24" width="16" height="16" fill="none" stroke="#ffffff" stroke-opacity=".4"/>
+        <rect x="860" y="600" width="16" height="16" fill="none" stroke="#ffffff" stroke-opacity=".4"/>
+      </svg>`;
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    }
+
+    function badge(type) {
+      const base = 'absolute top-4 left-4 z-10 px-2.5 py-1 rounded-md font-mono text-[10px] uppercase tracking-widest backdrop-blur-md ';
+      return type === 'video'
+        ? base + 'bg-viol/80 text-white border border-viol'
+        : base + 'bg-black/60 text-elec border border-elec/40';
+    }
+
+    function playIcon() {
+      return `<span class="absolute inset-0 z-10 grid place-items-center">
+        <span class="w-14 h-14 rounded-full bg-black/55 backdrop-blur border border-white/25 grid place-items-center text-white group-hover:bg-elec group-hover:text-black transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </span>`;
+    }
+
+    const grid = document.getElementById('work-grid');
+
+    function renderWorks(filter = 'all') {
+      const items = WORKS.filter((w) => filter === 'all' || w.cat === filter);
+      grid.innerHTML = items.map((w) => {
+        const src = w.thumb || thumbURI(w);
+        const media = w.thumb
+          ? `<img src="${w.thumb}" alt="${w.title}" class="w-full h-full object-cover" loading="lazy">`
+          : `<img src="${src}" alt="${w.title}" class="w-full h-full object-cover" loading="lazy">`;
+        const linkBtn = w.url
+          ? `<a href="${w.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-widest text-elec hover:text-white transition-colors cursor-pointer">Visitar sitio
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>`
+          : '';
+        return `
+        <article class="work-card reveal group relative rounded-2xl overflow-hidden border border-white/10 bg-obsidian cursor-pointer" data-id="${w.id}" tabindex="0" role="button" aria-label="Ver proyecto ${w.title}">
+          <span class="${badge(w.type)}">${w.type === 'video' ? 'Video' : 'Caso'}</span>
+          <div class="relative aspect-[4/3] overflow-hidden">${media}${w.type === 'video' ? playIcon() : ''}</div>
+          <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black via-black/70 to-transparent">
+            <p class="label-mono text-[10px] mb-1.5">${CAT_LABELS[w.cat]}</p>
+            <h3 class="font-syne font-bold uppercase tracking-wide text-lg leading-tight">${w.title}</h3>
+            <div class="mt-3">${linkBtn}</div>
+          </div>
+        </article>`;
+      }).join('');
+
+      grid.querySelectorAll('.reveal').forEach((el) => {
+        if (reduceMotion) el.classList.add('is-in');
+        else revealObserver.observe(el);
+      });
+
+      grid.querySelectorAll('.work-card').forEach((card) => {
+        const open = () => openLightbox(Number(card.dataset.id));
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return; // permite clic en "Visitar sitio"
+          open();
+        });
+        card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      });
+    }
+    renderWorks();
+
+    /* ---------- Filtros ---------- */
+    const filterBtns = [...document.querySelectorAll('.filter-btn')];
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach((b) => {
+          b.classList.remove('active', 'border-elec/50', 'bg-elec/10', 'text-elec');
+          b.classList.add('border-white/15', 'text-gray-400');
+        });
+        btn.classList.add('active', 'border-elec/50', 'bg-elec/10', 'text-elec');
+        btn.classList.remove('border-white/15', 'text-gray-400');
+        renderWorks(btn.dataset.filter);
+      });
+    });
+
+    /* ---------- Lightbox ---------- */
+    const lb = document.getElementById('lightbox');
+    const lbMedia = document.getElementById('lb-media');
+    const lbTitle = document.getElementById('lb-title');
+    const lbCat = document.getElementById('lb-cat');
+    const lbLink = document.getElementById('lb-link');
+    let lbIndex = 0, lastFocus = null;
+
+    function visibleWorks() {
+      const active = document.querySelector('.filter-btn.active');
+      const f = active ? active.dataset.filter : 'all';
+      return WORKS.filter((w) => f === 'all' || w.cat === f);
+    }
+
+    function paintLightbox() {
+      const list = visibleWorks();
+      const w = list[lbIndex];
+      if (!w) return;
+      lbTitle.textContent = w.title;
+      lbCat.textContent = `${CAT_LABELS[w.cat]} // AMPLIKAA`;
+      if (w.url) {
+        lbLink.href = w.url;
+        lbLink.classList.remove('hidden');
+      } else {
+        lbLink.classList.add('hidden');
+      }
+      if (w.type === 'video') {
+        lbMedia.innerHTML = `<video class="w-full max-h-[62vh] bg-black" controls playsinline preload="none" poster="${w.thumb || thumbURI(w)}"><source src="${w.video}" type="video/mp4">Tu navegador no soporta video.</video>`;
+      } else {
+        lbMedia.innerHTML = `<img src="${w.thumb || thumbURI(w)}" alt="${w.title}" class="w-full max-h-[62vh] object-contain bg-obsidian">`;
+      }
+    }
+
+    function openLightbox(id) {
+      const list = visibleWorks();
+      const i = list.findIndex((w) => w.id === id);
+      lbIndex = i >= 0 ? i : 0;
+      lastFocus = document.activeElement;
+      paintLightbox();
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('lb-close').focus();
+    }
+
+    function closeLightbox() {
+      lbMedia.innerHTML = '';
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    function step(dir) {
+      const len = visibleWorks().length;
+      lbIndex = (lbIndex + dir + len) % len;
+      paintLightbox();
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev').addEventListener('click', () => step(-1));
+    document.getElementById('lb-next').addEventListener('click', () => step(1));
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (lb.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+
+    /* ---------- Planes → precargar formulario ---------- */
+    const selServicio = document.getElementById('f-servicio');
+    const selPresu = document.getElementById('f-presupuesto');
+    document.querySelectorAll('.plan-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const plan = btn.dataset.plan; // ej. "Crecimiento — $349/mes"
+        const name = plan.split('—')[0].trim();
+        [...selServicio.options].forEach((o) => {
+          if (o.text === `Plan: ${name}`) selServicio.value = o.value || o.text;
+        });
+        const amount = Number((plan.match(/\$(\d+)/) || [])[1] || 0);
+        if (amount >= 700) selPresu.value = '$700 – $1,500';
+        else if (amount >= 300) selPresu.value = '$300 – $700';
+        else selPresu.value = '$100 – $300';
+        document.getElementById('contacto').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+        setTimeout(() => document.getElementById('f-nombre').focus({ preventScroll: true }), reduceMotion ? 0 : 650);
+      });
+    });
+
+    /* ---------- Validación y envío del formulario ---------- */
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+
+    function setErr(input, msg) {
+      const p = document.querySelector(`[data-err-for="${input.id}"]`);
+      input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      if (!p) return;
+      if (msg) { p.textContent = msg; p.classList.remove('hidden'); }
+      else { p.textContent = ''; p.classList.add('hidden'); }
+    }
+
+    function validate() {
+      let ok = true, first = null;
+      const nombre = document.getElementById('f-nombre');
+      const email = document.getElementById('f-email');
+      const wpp = document.getElementById('f-wpp');
+      const servicio = document.getElementById('f-servicio');
+      const mensaje = document.getElementById('f-mensaje');
+
+      if (nombre.value.trim().length < 2) { setErr(nombre, 'Indica tu nombre.'); ok = false; first = first || nombre; } else setErr(nombre, '');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) { setErr(email, 'Email inválido.'); ok = false; first = first || email; } else setErr(email, '');
+      if (wpp.value.replace(/\D/g, '').length < 8) { setErr(wpp, 'Incluye tu WhatsApp con código de país.'); ok = false; first = first || wpp; } else setErr(wpp, '');
+      if (!servicio.value) { setErr(servicio, 'Selecciona un servicio.'); ok = false; first = first || servicio; } else setErr(servicio, '');
+      if (mensaje.value.trim().length < 10) { setErr(mensaje, 'Cuéntanos un poco más (mín. 10 caracteres).'); ok = false; first = first || mensaje; } else setErr(mensaje, '');
+
+      if (first) first.focus();
+      return ok;
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+
+      const d = Object.fromEntries(new FormData(form).entries());
+      const lines = [
+        'Hola AMPLIKAA, vengo de su página web.',
+        '',
+        `*Nombre:* ${d.nombre}`,
+        d.empresa ? `*Empresa:* ${d.empresa}` : null,
+        `*Email:* ${d.email}`,
+        `*WhatsApp:* ${d.whatsapp}`,
+        `*Servicio:* ${d.servicio}`,
+        d.presupuesto ? `*Presupuesto:* ${d.presupuesto}` : null,
+        '',
+        `*Mensaje:* ${d.mensaje}`,
+      ].filter(Boolean);
+
+      window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+      success.setAttribute('tabindex', '-1');
+      success.focus();
+    });
+
+    document.getElementById('form-reset').addEventListener('click', () => {
+      form.reset();
+      ['f-nombre', 'f-email', 'f-wpp', 'f-servicio', 'f-mensaje'].forEach((id) => setErr(document.getElementById(id), ''));
+      success.classList.add('hidden');
+      form.classList.remove('hidden');
+      document.getElementById('f-nombre').focus();
+    });
+  </script>
+</body>
+</html>

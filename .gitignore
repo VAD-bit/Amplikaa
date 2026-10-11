@@ -1,3 +1,26 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# Producción
+build/
+dist/
+
+# Vercel
+.vercel/
+
+# Variables de entorno (nunca se suben claves)
+.env
+.env.local
+.env.*.local
+
+# TypeScript
+*.tsbuildinfo
+
 # Sistema
 Thumbs.db
 Desktop.ini
@@ -6,10 +29,9 @@ Desktop.ini
 # Temporales
 *.tmp
 *.log
-node_modules/
-__pycache__/
-*.pyc
 
 # OpenCode local
 .opencode/cache/
 .opencode/logs/
+__pycache__/
+*.pyc

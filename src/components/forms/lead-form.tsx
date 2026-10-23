@@ -72,7 +72,7 @@ export function LeadForm({ defaultValues, id = "lead-form", compact = false }: L
       <div
         ref={successRef}
         tabIndex={-1}
-        className="relative corners glass rounded-2xl p-10 text-center focus:outline-none"
+        className="relative corners glass p-10 text-center focus:outline-none"
         role="status"
       >
         {confetti && (
@@ -83,7 +83,7 @@ export function LeadForm({ defaultValues, id = "lead-form", compact = false }: L
                 className="absolute top-0 block h-2 w-1.5 animate-confetti rounded-sm"
                 style={{
                   left: `${(i * 100) / 18}%`,
-                  background: i % 2 ? "#00F0FF" : "#7B2CBF",
+                  background: i % 2 ? "#f4bdb4" : "#b9c9f2",
                   animationDelay: `${i * 0.08}s`,
                 }}
               />
@@ -91,10 +91,10 @@ export function LeadForm({ defaultValues, id = "lead-form", compact = false }: L
           </div>
         )}
         <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-elec/10">
-          <CheckCircle2 className="h-7 w-7 text-elec" aria-hidden="true" />
+          <CheckCircle2 className="h-7 w-7 text-ink" aria-hidden="true" />
         </div>
         <h3 className="font-syne text-2xl font-extrabold uppercase">Solicitud recibida</h3>
-        <p className="mt-3 text-gray-400">
+        <p className="mt-3 text-ink-soft">
           Te contactamos en menos de 24 horas con un plan de acción y presupuesto.
         </p>
         <Button variant="outline" className="mt-6" onClick={() => reset({ nombre: "", email: "", whatsapp: "", empresa: "", servicio: "", presupuesto: "", mensaje: "" })}>
@@ -105,13 +105,13 @@ export function LeadForm({ defaultValues, id = "lead-form", compact = false }: L
   }
 
   return (
-    <form id={id} action={formAction} noValidate className="corners glass relative rounded-2xl p-7 sm:p-10">
+    <form id={id} action={formAction} noValidate className="corners glass relative p-7 sm:p-10">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor={`${id}-nombre`} className="label-mono mb-2 block">Nombre *</label>
           <Input id={`${id}-nombre`} autoComplete="name" placeholder="Tu nombre" aria-invalid={!!errors.nombre} {...register("nombre")} />
-          {errors.nombre && <p className="mt-1.5 text-xs text-red-400">{errors.nombre.message}</p>}
-          {state.errors?.nombre && <p className="mt-1.5 text-xs text-red-400">{state.errors.nombre}</p>}
+          {errors.nombre && <p className="mt-1.5 text-xs text-red-600">{errors.nombre.message}</p>}
+          {state.errors?.nombre && <p className="mt-1.5 text-xs text-red-600">{state.errors.nombre}</p>}
         </div>
         <div>
           <label htmlFor={`${id}-empresa`} className="label-mono mb-2 block">Empresa</label>
@@ -120,14 +120,14 @@ export function LeadForm({ defaultValues, id = "lead-form", compact = false }: L
         <div>
           <label htmlFor={`${id}-email`} className="label-mono mb-2 block">Email *</label>
           <Input id={`${id}-email`} type="email" autoComplete="email" placeholder="tu@email.com" aria-invalid={!!errors.email} {...register("email")} />
-          {errors.email && <p className="mt-1.5 text-xs text-red-400">{errors.email.message}</p>}
-          {state.errors?.email && <p className="mt-1.5 text-xs text-red-400">{state.errors.email}</p>}
+          {errors.email && <p className="mt-1.5 text-xs text-red-600">{errors.email.message}</p>}
+          {state.errors?.email && <p className="mt-1.5 text-xs text-red-600">{state.errors.email}</p>}
         </div>
         <div>
           <label htmlFor={`${id}-whatsapp`} className="label-mono mb-2 block">WhatsApp *</label>
           <Input id={`${id}-whatsapp`} type="tel" autoComplete="tel" placeholder="+58 4XX XXX XXXX" aria-invalid={!!errors.whatsapp} {...register("whatsapp")} />
-          {errors.whatsapp && <p className="mt-1.5 text-xs text-red-400">{errors.whatsapp.message}</p>}
-          {state.errors?.whatsapp && <p className="mt-1.5 text-xs text-red-400">{state.errors.whatsapp}</p>}
+          {errors.whatsapp && <p className="mt-1.5 text-xs text-red-600">{errors.whatsapp.message}</p>}
+          {state.errors?.whatsapp && <p className="mt-1.5 text-xs text-red-600">{state.errors.whatsapp}</p>}
         </div>
         <div>
           <label htmlFor={`${id}-servicio`} className="label-mono mb-2 block">Servicio *</label>
@@ -137,8 +137,8 @@ export function LeadForm({ defaultValues, id = "lead-form", compact = false }: L
               <option key={s} value={s}>{s}</option>
             ))}
           </Select>
-          {errors.servicio && <p className="mt-1.5 text-xs text-red-400">{errors.servicio.message}</p>}
-          {state.errors?.servicio && <p className="mt-1.5 text-xs text-red-400">{state.errors.servicio}</p>}
+          {errors.servicio && <p className="mt-1.5 text-xs text-red-600">{errors.servicio.message}</p>}
+          {state.errors?.servicio && <p className="mt-1.5 text-xs text-red-600">{state.errors.servicio}</p>}
         </div>
         <div>
           <label htmlFor={`${id}-presupuesto`} className="label-mono mb-2 block">Presupuesto (USD)</label>
@@ -154,8 +154,8 @@ export function LeadForm({ defaultValues, id = "lead-form", compact = false }: L
         <div className="mt-5">
           <label htmlFor={`${id}-mensaje`} className="label-mono mb-2 block">¿Qué necesitas? *</label>
           <Textarea id={`${id}-mensaje`} rows={4} placeholder="Cuéntanos sobre tu proyecto, objetivos y plazos…" aria-invalid={!!errors.mensaje} {...register("mensaje")} />
-          {errors.mensaje && <p className="mt-1.5 text-xs text-red-400">{errors.mensaje.message}</p>}
-          {state.errors?.mensaje && <p className="mt-1.5 text-xs text-red-400">{state.errors.mensaje}</p>}
+          {errors.mensaje && <p className="mt-1.5 text-xs text-red-600">{errors.mensaje.message}</p>}
+          {state.errors?.mensaje && <p className="mt-1.5 text-xs text-red-600">{state.errors.mensaje}</p>}
         </div>
       )}
       {compact && (
@@ -164,13 +164,13 @@ export function LeadForm({ defaultValues, id = "lead-form", compact = false }: L
           <div className="mt-5">
             <label htmlFor={`${id}-mensaje`} className="label-mono mb-2 block">¿Qué necesitas? *</label>
             <Textarea id={`${id}-mensaje`} rows={3} placeholder="Cuéntanos de tu proyecto…" aria-invalid={!!errors.mensaje} {...register("mensaje")} />
-            {errors.mensaje && <p className="mt-1.5 text-xs text-red-400">{errors.mensaje.message}</p>}
+            {errors.mensaje && <p className="mt-1.5 text-xs text-red-600">{errors.mensaje.message}</p>}
           </div>
         </>
       )}
 
       {state.status === "error" && state.message && (
-        <div className="mt-5 flex items-start gap-3 rounded-xl border border-red-400/30 bg-red-400/5 p-4 text-sm text-red-300" role="alert">
+        <div className="mt-5 flex items-start gap-3 rounded-xl border border-red-600/40 bg-red-50 p-4 text-sm text-red-700" role="alert">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
           {state.message}
         </div>
@@ -186,7 +186,7 @@ export function LeadForm({ defaultValues, id = "lead-form", compact = false }: L
           "Enviar solicitud"
         )}
       </Button>
-      <p className="mt-4 text-center font-mono text-[11px] text-gray-500">
+      <p className="mt-4 text-center font-mono text-[11px] text-ink-mute">
         Respondemos en menos de 24 h · Sin compromiso
       </p>
     </form>

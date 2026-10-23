@@ -86,7 +86,6 @@ export async function submitStudio(
 
     if (error) {
       console.error("[studio insert]", error.message);
-      // El reporte se genera igualmente; el guardado remoto es best-effort.
     }
   }
 

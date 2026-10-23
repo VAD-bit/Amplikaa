@@ -3,6 +3,7 @@
 import { Globe, Video, Code2, Palette, TrendingUp, MessageSquare } from "lucide-react";
 import { SERVICES, type ServiceIcon } from "@/lib/config";
 import { Reveal } from "@/components/motion/reveal";
+import { SectionHead } from "@/components/home/section-head";
 import { cn } from "@/lib/utils";
 
 const ICONS: Record<ServiceIcon, typeof Globe> = {
@@ -16,17 +17,22 @@ const ICONS: Record<ServiceIcon, typeof Globe> = {
 
 export function Services() {
   return (
-    <section id="servicios" className="relative py-28 sm:py-36" aria-labelledby="tit-servicios">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Reveal className="mb-16 max-w-3xl">
-          <p className="label-mono mb-4">// 01 — Servicios</p>
-          <h2 id="tit-servicios" className="font-syne text-4xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Un ecosistema,<br /><span className="text-gradient">no piezas sueltas</span>
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-gray-400">
-            Cada servicio se conecta con el siguiente: de la identidad al contenido, del contenido al sitio, del sitio al cliente.
-          </p>
-        </Reveal>
+    <section id="servicios" className="relative overflow-hidden py-24 sm:py-32" aria-labelledby="tit-servicios">
+      <div className="aurora -top-20 right-0 h-[420px] w-[420px] bg-sky/25" aria-hidden="true" />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHead
+          id="tit-servicios"
+          no="01"
+          kicker="Los oficios"
+          title={
+            <>
+              Un ecosistema,<br />
+              <span className="text-gradient italic">no piezas sueltas</span>
+            </>
+          }
+          deck="Cada servicio se conecta con el siguiente: de la identidad al contenido, del contenido al sitio, del sitio al cliente."
+          meta="Seis redacciones"
+        />
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => {
@@ -36,19 +42,29 @@ export function Services() {
               <Reveal key={s.index} delay={i * 0.06}>
                 <article
                   className={cn(
-                    "group corners glass relative h-full rounded-2xl p-8 transition-all duration-300 cursor-default",
-                    viol ? "hover:border-viol/50" : "hover:border-elec/40"
+                    "group glass relative h-full cursor-default p-7 transition-all duration-300",
+                    viol ? "hover:-translate-y-1 hover:shadow-[6px_6px_0_rgba(11,10,8,0.85)]" : "hover:-translate-y-1 hover:shadow-[6px_6px_0_rgba(11,10,8,0.85)]"
                   )}
                 >
-                  <div className="mb-8 flex items-start justify-between">
-                    <Icon className={viol ? "text-viol" : "text-elec"} size={30} strokeWidth={1.5} aria-hidden="true" />
-                    <span className="font-mono text-xs text-gray-600">{s.index}</span>
+                  <div className="mb-6 flex items-start justify-between border-b border-ink/20 pb-4">
+                    <span
+                      className={cn(
+                        "grid h-11 w-11 place-items-center border border-ink/25 bg-paper-3/70",
+                        viol ? "text-ink" : "text-ink"
+                      )}
+                    >
+                      <Icon size={22} strokeWidth={1.6} aria-hidden="true" />
+                    </span>
+                    <span className="font-mono text-xs text-ink-mute">{s.index}</span>
                   </div>
-                  <h3 className="mb-3 font-syne text-xl font-bold uppercase tracking-wide">{s.title}</h3>
-                  <p className="mb-6 text-sm leading-relaxed text-gray-400">{s.desc}</p>
+                  <h3 className="headline mb-3 text-xl uppercase">{s.title}</h3>
+                  <p className="mb-5 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
                   <ul className="flex flex-wrap gap-2">
                     {s.tags.map((t) => (
-                      <li key={t} className="rounded border border-white/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-gray-400">
+                      <li
+                        key={t}
+                        className="border border-ink/25 bg-paper-3/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-ink-soft"
+                      >
                         {t}
                       </li>
                     ))}

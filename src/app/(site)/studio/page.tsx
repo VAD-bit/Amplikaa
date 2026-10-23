@@ -21,14 +21,14 @@ export default function StudioPage() {
           <h1 className="font-syne text-4xl font-extrabold uppercase leading-[1.02] tracking-tight sm:text-6xl">
             Diseña tu sitio.<br /><span className="text-gradient">Nosotros lo construimos.</span>
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-gray-400">
+          <p className="mt-6 text-lg leading-relaxed text-ink-soft">
             En 4 pasos armas el esquema visual de tu website, explicas tu idea (por escrito o por voz)
-            y defines tu presupuesto. Al enviar, generamos un <strong className="text-white">plan de desarrollo</strong>,
-            un <strong className="text-white">diagnóstico de complejidad</strong> y un <strong className="text-white">análisis financiero</strong> al instante.
+            y defines tu presupuesto. Al enviar, generamos un <strong className="text-ink">plan de desarrollo</strong>,
+            un <strong className="text-ink">diagnóstico de complejidad</strong> y un <strong className="text-ink">análisis financiero</strong> al instante.
           </p>
           <Link
             href="/"
-            className="mt-6 inline-flex cursor-pointer items-center gap-2 text-sm text-gray-400 transition-colors hover:text-elec"
+            className="mt-6 inline-flex cursor-pointer items-center gap-2 text-sm text-ink-soft transition-colors hover:text-ink"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Volver a la landing

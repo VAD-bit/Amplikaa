@@ -28,7 +28,6 @@ export async function getSupabaseServer() {
             cookieStore.set(name, value, options)
           );
         } catch {
-          // Ignorado en Server Components (middleware se encarga del refresh).
         }
       },
     },

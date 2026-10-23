@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Syne, Space_Grotesk, Space_Mono } from "next/font/google";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
+import { Libre_Bodoni, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const syne = Syne({
+const syne = Libre_Bodoni({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-syne",
   display: "swap",
 });
@@ -26,12 +25,13 @@ const mono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AMPLIKAA — Agencia de Marketing Digital | Ecosistemas, Producción y Desarrollo",
+  title: "AMPLIKAA — Agencia de Marketing Digital | Web, Sistemas y Campañas",
   description:
-    "AMPLIKAA es una agencia de marketing digital en Venezuela. Creamos ecosistemas digitales, producción audiovisual y desarrollo web que convierten atención en crecimiento.",
+    "AMPLIKAA es una agencia de marketing digital en Maracay, Venezuela. Catálogo de webs y sistemas, clientes con campañas activas, y planes de marketing y desarrollo.",
   openGraph: {
-    title: "AMPLIKAA — High-End Brand Agency",
-    description: "Digital Ecosystems · Production · Development. Agencia de marketing digital en Venezuela.",
+    title: "AMPLIKAA — Agencia de Marketing Digital",
+    description:
+      "Web, sistemas, campañas y producción. El periódico completo de la agencia desde Maracay, Venezuela.",
     type: "website",
   },
   metadataBase: new URL("https://amplikaa.com"),
@@ -40,11 +40,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${syne.variable} ${grotesk.variable} ${mono.variable}`}>
-      <body className="antialiased">
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
